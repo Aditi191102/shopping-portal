@@ -33,12 +33,12 @@ const Home = () => {
         loading ? (
       items.length>0 ? 
       (
-        <div>
-          {items.map((item)=>(
-          <Products key={item.id} item={item}/>
-        ) )
-          }
-        </div>
+          <div className='grid xs:grid-col-s1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 space-x-10 space-y-10 p-2 max-w-6xl mx-auto min-h-[80vh] '>
+            {items.map((item)=>(
+            <Products key={item.id} item={item}/>
+          ) )
+            }
+          </div>
       ):
       (<p>No Product Available</p>)
     ):

@@ -8,22 +8,39 @@ const CartItems = ({item}) => {
 const dispatch = useDispatch();
   const removeFromCart = () =>{
     dispatch(remove(item.id));
-    toast.success("Product Removed");
+    toast.error("Product Removed");
   }   
   return (
+    
     <div>
-        <div>
-            <div>
-                <img src={item.image} alt='item-Image'></img>
+
+        <div className='flex items-center justify-center border-b-2 border-black p-2 space-x-10'>
+           
+            <div className='h-[220px] w-[180px]'>
+                <img src={item.image} alt='item-Image' className='h-full w-full'></img>
             </div>
-            <div>
-                <h1>{item.title}</h1>
-                <h3>{item.description}</h3>
-                <div>
-                    <p>{item.price}</p>
-                <div onClick={removeFromCart}>
-                    <AiTwotoneDelete/>
+            
+            <div className='w-80'>
+                <div className='m-2'>
+                  <h1 className='font-semibold'>{item.title.split(" ").slice(0,6).join(" ")}
+                    <br/>
+                    {item.title.split(" ").slice(6).join(" ")}
+                  </h1>
                 </div>
+
+                <div className='m-2'>
+                  <h3 className='text-gray-600'>{item.description.split(" ").slice(0,15).join(" ")+"..."}
+                </h3>
+                </div>
+                
+                <div className='flex justify-between mt-20 p-2 text-xl font-semibold'>
+                    <p className='text-green-700 font-md'>${item.price}</p>
+                
+                    <div onClick={removeFromCart} 
+                    className='border-2 flex items-center p-2 bg-pink-200 rounded-full
+                    hover:bg-red-400'>
+                      <AiTwotoneDelete/>
+                    </div>
                 </div>
             </div>
         </div>  
